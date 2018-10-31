@@ -1,7 +1,7 @@
 # Thesis
 CHILD DISEASE CLASSIFICATION SYSTEM WITH FEVER SYMPTOMS USING FUZZY K-NEAREST NEIGHBOR (FK-NN)
 
-# BAHASA INDONESIA
+BAHASA INDONESIA
 
 Sebelum dapat menjalankan sistem ini, komputer pengguna harus sudah terinstall python versi 3
 https://www.python.org/downloads/

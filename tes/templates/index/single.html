@@ -1,0 +1,44 @@
+{% extends '../base.html' %}
+
+{% block body %}
+<body>
+	<div class="wrapper">
+		{% include 'index/component/sidebar.html' %}
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li><a href="/tes/"><h4>File</h4></a></li>
+						<li class="active"><a href="/tes/single/"><h4>Single</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="solo">
+						<h3>Classification</h3>
+						<form enctype="multipart/form-data" method="post" action="/tes/hasil/">
+							{% csrf_token %}
+							<input type="hidden" value="solo" name="hidden"></input>
+							<div class="row section-1">
+								<div class="col-sm-6">
+									<div class="data">
+										{% include 'index/component/training.html' %}
+										{% include 'index/component/pilih_class.html' %}
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="data">
+										{% include 'index/component/input_tes.html' %}
+									</div>
+								</div>
+							</div>
+							{% include 'index/component/section_2.html' %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}

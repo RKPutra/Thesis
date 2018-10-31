@@ -1,0 +1,19 @@
+<form name="myForm" id="myForm" target="_myFrame" action="/tes/tambah_dokter/" method="POST">
+	{% csrf_token %}
+	<input type="hidden" value="{{hidden}}" name="hidden"></input>
+</form>
+
+<script type="text/javascript">
+    window.onload=function(){
+        var auto = setTimeout(function(){ autoRefresh(); }, 10);
+
+        function submitform(){
+          document.forms["myForm"].submit();
+        }
+
+        function autoRefresh(){
+           clearTimeout(auto);
+           auto = setTimeout(function(){ submitform(); autoRefresh(); }, 100);
+        }
+    }
+</script>

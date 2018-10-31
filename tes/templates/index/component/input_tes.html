@@ -1,0 +1,86 @@
+<h4>Data Test</h4>
+<div class="form-group row">
+	<div class="col-sm-4">
+		<h5>Frekuensi Nadi</h5>
+	</div>
+	<div class="col-sm-3">
+		<input type="text" class="form-control" placeholder="" name="nadi" required>
+	</div>
+	<div class="col-sm-2">
+		<h5>Berat</h5>
+	</div>
+	<div class="col-sm-3">
+		<input type="text" class="form-control" placeholder="" name="berat" required>
+	</div>
+	<div class="col-sm-4">
+		<h5>Suhu</h5>
+	</div>
+	<div class="col-sm-3">
+		<input type="text" class="form-control" placeholder="" name="suhu" required>
+	</div>
+	<div class="col-sm-2">
+		<h5>Tinggi</h5>
+	</div>
+	<div class="col-sm-3">
+		<input type="text" class="form-control" placeholder="" name="tinggi" required>
+	</div>
+	<div class="col-sm-4">
+		<h5>Frekuensi Nafas</h5>
+	</div>
+	<div class="col-sm-3">
+		<input type="text" class="form-control" placeholder="" name="nafas" required>
+	</div>
+	<div class="col-sm-5">
+		<div class="blank"></div>
+	</div>
+	<div class="col-sm-4">
+		<h5>Nyeri</h5>
+	</div>
+	<div class="col-sm-3">
+		<select class="form-control" name="nyeri" required>
+			<option value="tidak">Tidak</option>
+			<option value="ya">ya</option>
+		</select>
+	</div>
+	<div class="col-sm-5">
+		<div class="blank"></div>
+	</div>
+	<div class="anamnesis" id="anamnesis">
+		<div class="col-sm-12">
+			<h5>Riwayat Penyakit Positif</h5>
+			<input type="hidden" id="a" value="1" name="a"></input>
+		</div>
+		<div id="a1">
+			<div class="col-sm-10">
+				<input type="text" class="form-control" placeholder="" name="anamnesis1" required>
+			</div>
+			<div class="col-sm-2">
+				<input type="button" class="form-control btn" id="tambah" onclick="formInputAnamnesis();" value="+"></input>
+			</div>
+		</div>
+		<div id="z"></div>
+		
+	</div>
+</div>
+<script>
+	function formInputAnamnesis(){
+		var n = Number(document.getElementById("a").value);
+		var x = '#a'.concat(n); 
+		var el = document.querySelector(x);
+		var newEl = document.createElement('div');
+		newEl.id = 'a'.concat(n);
+		newEl.innerHTML = '<div class="col-sm-12"><input type="text" class="form-control" placeholder="" name="anamnesis'+n+'" required></div>';
+		el.parentNode.replaceChild(newEl, el);
+		var el2 = document.querySelector('#z');
+		var newEl2 = document.createElement('div');
+		newEl2.id = 'a'.concat(n+1);
+		newEl2.innerHTML = '<div class="col-sm-10"><input type="text" class="form-control" placeholder="" name="anamnesis'+(n+1)+'" required></div><div class="col-sm-2"><input type="button" class="form-control btn" id="tambah" onclick="formInputAnamnesis();" value="+"></input></div>';
+		el2.parentNode.replaceChild(newEl2, el2);
+		var newEl3 = document.createElement('div');
+		newEl3.id = 'z';
+		document.getElementById("anamnesis").appendChild(newEl3);
+        n = n + 1
+        document.getElementById("a").value = n;
+  	}
+
+</script>

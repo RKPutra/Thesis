@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sistem Klasifikasi</title>
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="sidebar-main">
+				<div class="vertical-menu">
+					<a href="/tes/diagnosis"><img src="{% static 'images/uii.png' %}"></a>
+					<div class="menu">
+						<a href="/tes/diagnosis"><h4><i class="material-icons">sort</i> Diagnosis</h4></a>
+						<a href="/tes/hasilDiagnosis" class="active"><h4><i class="material-icons">receipt</i> Hasil diagnosis</h4></a>
+						<div class="sidebar-footer" style="padding-top: 284px;">
+							<p>Hak Cipta &copy; 2018</br>Rizky Karunia Putra</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/tes/logout/"><h4>Logout</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="file">
+						<h3>Tabel Diagnosis</h3>
+						<div class="row section-1">
+							<div class="col-sm-7">
+								<div class="data">
+									<table class="table">
+										{% for list in rslt %}
+										{% if forloop.counter == 1 %}
+										<thead>
+											<tr>
+											{% if list|length == 3 %}
+												<th scope="col">No</th>
+												<th scope="col">Result</th>
+											{% else %}
+												<th scope="col">No</th>
+												<th scope="col">Result</th>
+												<th scope="col">Real</th>
+												<th scope="col">Status</th>
+												
+											{% endif %}
+											{% for l in label %}
+											<th scope="col">{{l}}</th>
+											{% endfor %}
+											</tr>
+										</thead>
+										{% endif %}
+										{% endfor %}
+										<tbody>
+											{% for list in rslt %}
+											<tr>
+												{% with n=forloop.counter %}
+												<th scope="row">{{n}}</th>
+												{% for nested_list in list %}
+												<td>{{nested_list}}</td>
+												
+												{% endfor %}
+												<td>{{himpunan.n}}</td>
+												{% endwith %}
+											</tr>
+											{% endfor %}										
+										</tbody>
+										
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

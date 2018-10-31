@@ -1,0 +1,80 @@
+{% extends '../base.html' %}
+
+{% block body %}
+{% load static %}
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="sidebar-main">
+				<div class="vertical-menu">
+					<a href="/tes/tambah_dokter"><img src="{% static 'images/uii.png' %}"></a>
+					<div class="menu">
+						<a href="/tes/tambah_dokter"><h4><i class="material-icons">add_box</i> Tambah Dokter</h4></a>
+						<a href="/tes/training" class="active"><h4><i class="material-icons">sort</i> Training Data</h4></a>
+						<a href="/tes/hasilTraining"><h4><i class="material-icons">receipt</i> Hasil Training</h4></a>
+						<a href="/tes/ganti_parameter"><h4><i class="material-icons">receipt</i> Ganti Parameter</h4></a>
+						<div class="sidebar-footer">
+							<p>Hak Cipta &copy; 2018</br>Rizky Karunia Putra</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/tes/logout/"><h4>Logout</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="solo">
+						<h3>Training Data</h3>
+						<form enctype="multipart/form-data" method="post" action="/tes/hasilTraining/" onsubmit="submit();">
+							{% csrf_token %}
+							<div class="row section-1">
+								<div class="col-sm-6">
+									<div class="data">
+										{% include 'index/component/split.html' %}
+										{% include 'index/component/pilih_class.html' %}
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="data">
+										<h3>Parameter</h3>
+										<div class="parameter">
+											<h6>Nilai K : jumlah tetangga yang ingin diuji (contoh: 10)</h6>
+											<h6>Nilai M : Nilai pangkat bobot yang ingin diberikan pada tetangga (contoh: 2)</h6>
+										</div>
+										<div class="form-group row">
+											<div class="col-sm-3">
+												<h4>K</h4>
+												<h6>Tetangga</h6>
+											</div>
+											<div class="col-sm-3 input">
+												<input type="number" min="1" max="20" class="form-control" placeholder="" name="k" required>
+											</div>
+											<div class="col-sm-3">
+												<h4>M</h4>
+												<h6>M > 1</h6>
+											</div>
+											<div class="col-sm-3 input">
+												<input type="number" min="2" max="7" class="form-control" placeholder="" name="m" required>
+											</div>
+											<div class="col-sm-5 start">
+												<input type="submit" class="btn btn-primary btn-block" value="Start" id="submit" name="submit">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}

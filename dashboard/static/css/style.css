@@ -1,0 +1,219 @@
+/* Styles go here */
+{% load static %}
+
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url("../fonts/material-icon/MaterialIcons-Regular.eot"); /* For IE6-8 */
+  src: local('Material Icons'),
+    local('MaterialIcons-Regular'),
+    url("../fonts/material-icon/material-icon.woff2") format('woff2'),
+    url("../fonts/material-icon/MaterialIcons-Regular.woff") format('woff'),
+    url("{../fonts/material-icon/MaterialIcons-Regular.ttf") format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+  vertical-align: middle !important;
+  padding-bottom: 3px;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  background-color: #ececec
+}
+
+body{
+  margin: 0 auto;
+}
+
+.wrapper {
+  height: 100%;
+}
+
+.content {
+  width: 85%;
+  height: 100%;
+  float: left;
+  background-color: #ececec;
+  overflow-y: auto
+}
+
+.sidebar{
+  width: 15%;
+  height: 100%;
+  float: left;
+  background-color: #fff;
+  border-right: 1px solid #999999;
+}
+
+.content > .navbar {
+  padding-left: 70px;
+  margin-bottom: 0;
+  background-color: #fff;
+  border-bottom: 1px solid #999999;
+}
+
+.container-fluid > .navbar-nav > li > a {
+  color: #333333;
+}
+
+.container-fluid > .navbar-nav > .active > a{
+  background-color: #fff;
+  color: #333333;
+  border-bottom: 5px solid #ff0066;
+}
+
+.main > .tab-content > .container-fluid {
+  padding-left: 85px;
+  padding-right: 85px;
+}
+
+.main {
+  margin-bottom: 15px;
+}
+
+.data {
+  padding: 15px 35px 15px 35px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.upload {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 80px 110px 34px 110px;
+  text-align: center;
+  border: 2px dotted #666666;
+  border-radius: 5px;
+}
+
+.tes {
+  margin-top: 20px;
+  margin-bottom: 10px;
+  padding: 5px 10px 5px 10px;
+  border: 2px dotted #666666;
+  border-radius: 5px;
+}
+
+.section-2 {
+  margin-top: 20px;
+}
+
+.section-2 > .start {
+  text-align: center;
+  padding: 35px 100px 25px 100px;
+}
+
+.blank {
+  padding-top: 35.4px;
+}
+
+.anamnesis {
+  margin-top: 20px;
+}
+
+.anamnesis > div > .col-sm-12 > input{
+  padding-right: 0;
+  margin-top: 10px;
+}
+
+.anamnesis > div > .col-sm-10{
+  padding-right: 0;
+  margin-top: 10px;
+}
+
+.anamnesis > div > .col-sm-10 > .form-control {
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.anamnesis > div > .col-sm-2{
+  padding-left: 0;
+  margin-top: 10px;
+}
+
+.anamnesis > div > .col-sm-2 > .btn {
+  border-top-left-radius: 0;
+  border-bottom-left-radius: 0;
+  text-align: center;
+  background-color: #c83737;
+  color: #fff;
+}
+
+.vertical-menu a {
+  color: black;
+  display: block;
+  padding: 12px;
+  text-decoration: none;
+}
+
+.vertical-menu > .menu a {
+  color: #999;
+  display: block;
+  padding: 22px;
+  text-decoration: none;
+}
+
+.vertical-menu > .menu a:hover {
+  background-color: #ccc;
+}
+
+.vertical-menu > .menu a.active {
+  color: #ff0066;
+}
+
+.vertical-menu > a > img {
+  width: 100%;
+}
+
+.sidebar-footer {
+  padding-top: 290px;
+  text-align: center;
+}
+
+.inputfile {
+  width: 0.1px;
+  height: 0.1px;
+  opacity: 0;
+  overflow: hidden;
+  position: absolute;
+  z-index: -1;
+}
+
+.chart-container {
+  position: relative;
+  margin: auto;
+  height: 150px;
+  width: 125px;
+  background-color: #fff;
+  border-radius: 5px;
+}
+
+.input {
+  margin-top: 20px;
+}

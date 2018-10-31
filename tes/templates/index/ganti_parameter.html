@@ -1,0 +1,47 @@
+{% extends '../base.html' %}
+
+{% block body %}
+{% load static %}
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="sidebar-main">
+				<div class="vertical-menu">
+					<a href="/tes/tambah_dokter"><img src="{% static 'images/uii.png' %}"></a>
+					<div class="menu">
+						<a href="/tes/tambah_dokter"><h4><i class="material-icons">add_box</i> Tambah Dokter</h4></a>
+						<a href="/tes/training"><h4><i class="material-icons">sort</i> Training Data</h4></a>
+						<a href="/tes/hasilTraining"><h4><i class="material-icons">receipt</i> Hasil Training</h4></a>
+						<a href="/tes/ganti_parameter" class="active"><h4><i class="material-icons">receipt</i> Ganti Parameter</h4></a>
+						<div class="sidebar-footer">
+							<p>Hak Cipta &copy; 2018</br>Rizky Karunia Putra</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/tes/logout/"><h4>Logout</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="solo">
+						<h3>Ganti Parameter</h3>
+						<form enctype="multipart/form-data" method="post" action="/tes/prosesGantiParameter/">
+							{% csrf_token %}
+							<input type="hidden" value="solo" name="hidden"></input>
+							
+							{% include 'index/component/section_2.html' %}
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}

@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Sistem Klasifikasi</title>
+	{% load static %}
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}" />
+	<link rel="stylesheet" type="text/css" href="{% static 'css/bootstrap.min.css' %}" />
+	<script src="{% static 'js/jquery.min.js' %}"></script>
+	<script src="{% static 'js/bootstrap.min.js' %}"></script>
+	<script src="{% static 'js/Chart.bundle.min.js' %}"></script>
+	
+</head>
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="sidebar-main">
+				<div class="vertical-menu">
+					<a href="/tes/"><img src="{% static 'images/uii.png' %}"></a>
+					<div class="menu">
+						<a href="/tes/"><h4><i class="material-icons">sort</i> Classification</h4></a>
+						<a href="/tes/hasil" class="active"><h4><i class="material-icons">receipt</i> Result</h4></a>
+						<div class="sidebar-footer">
+							<p>Hak Cipta &copy; 2018</br>Rizky Karunia Putra</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav">
+						<li class="active"><a data-toggle="tab" href="#file"><h4>Result</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="file">
+						<h3>Hasil Prediksi</h3>
+						<div class="row section-1">
+							<div class="col-sm-7">
+								<div class="data">
+									<table class="table">
+										{% for list in rslt %}
+										{% if forloop.counter == 1 %}
+										<thead>
+											<tr>
+											{% if list|length == 3 %}
+												<th scope="col">No</th>
+												<th scope="col">Result</th>
+											{% else %}
+												<th scope="col">No</th>
+												<th scope="col">Result</th>
+												<th scope="col">Real</th>
+												<th scope="col">Status</th>
+												
+											{% endif %}
+											{% for l in label %}
+											<th scope="col">{{l}}</th>
+											{% endfor %}
+											</tr>
+										</thead>
+										{% endif %}
+										{% endfor %}
+										<tbody>
+											{% for list in rslt %}
+											<tr>
+												{% with n=forloop.counter %}
+												<th scope="row">{{n}}</th>
+												{% for nested_list in list %}
+												<td>{{nested_list}}</td>
+												
+												{% endfor %}
+												<td>{{himpunan.n}}</td>
+												{% endwith %}
+											</tr>
+											{% endfor %}										
+										</tbody>
+										
+									</table>
+								</div>
+							</div>
+							<div class="col-sm-5">
+								<div class="data">
+									<div class="row">
+										<div class="col-sm-12">
+											<h4>Akurasi {{akurasi}}</h4>
+											<div class="chart-container">
+												<canvas id="akurasi"></canvas>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<h4>Precision {{precision}}</h4>
+											<div class="chart-container">
+												<canvas id="precision"></canvas>
+											</div>
+										</div>
+										<div class="col-sm-6">
+											<h4>Recall {{recall}}</h4>
+											<div class="chart-container">
+												<canvas id="recall"></canvas>
+											</div>
+										</div>										
+									</div>									
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<script>
+		var ctx = document.getElementById("akurasi").getContext('2d');
+		var num = Math.round({{akurasi}} * 100) / 100
+		var myChart = new Chart(ctx, {
+		    type: 'doughnut',
+		    data: {
+		        datasets: [{
+
+		            data: [num, 100-num],
+		            backgroundColor: [
+		                'rgba(255, 99, 132)',
+		                'rgba(255, 255, 255)',
+		            ],
+		            borderColor: [
+		                'rgba(255,99,132,1)',
+		            ],
+		            borderWidth: 1,
+		            hoverBackgroundColor: [
+		            	'rgba(255, 99, 132)',
+		                'rgba(255, 255, 255)',
+		            ],
+		            hoverBorderColor: [
+		            	'rgba(255, 255, 255,1)',
+		            ],
+		            hoverBorderWidth: 1,
+
+		        }]
+		    },
+		    options: {
+		        legend: {
+	           		display: false,
+	           	},
+	           	maintainAspectRatio: false,
+		    }
+
+		});
+
+		var ctx2 = document.getElementById("precision").getContext('2d');
+		var num2 = Math.round({{precision}} * 100) / 100
+		var myChart2 = new Chart(ctx2, {
+		    type: 'doughnut',
+		    data: {
+		        datasets: [{
+
+		            data: [num2, 100-num2],
+		            backgroundColor: [
+		                'rgba(218, 153, 107)',
+		                'rgba(255, 255, 255)',
+		            ],
+		            borderColor: [
+		                'rgba(218, 153, 107,1)',
+		            ],
+		            borderWidth: 1,
+		            hoverBackgroundColor: [
+		            	'rgba(218, 153, 107)',
+		                'rgba(255, 255, 255)',
+		            ],
+		            hoverBorderColor: [
+		            	'rgba(255, 255, 255,1)',
+		            ],
+		            hoverBorderWidth: 1,
+
+		        }]
+		    },
+		    options: {
+		        legend: {
+	           		display: false,
+	           	},
+	           	maintainAspectRatio: false,
+		    }
+
+		});
+
+		var ctx3 = document.getElementById("recall").getContext('2d');
+		var num3 = Math.round({{recall}} * 100) / 100
+		var myChart3 = new Chart(ctx3, {
+		    type: 'doughnut',
+		    data: {
+		        datasets: [{
+
+		            data: [num3, 100-num3],
+		            backgroundColor: [
+		                'rgba(75, 108, 142)',
+		                'rgba(255, 255, 255)',
+		            ],
+		            borderColor: [
+		                'rgba(75, 108, 142,1)',
+		            ],
+		            borderWidth: 1,
+		            hoverBackgroundColor: [
+		            	'rgba(75, 108, 142)',
+		                'rgba(255, 255, 255)',
+		            ],
+		            hoverBorderColor: [
+		            	'rgba(255, 255, 255,1)',
+		            ],
+		            hoverBorderWidth: 1,
+
+		        }]
+		    },
+		    options: {
+		        legend: {
+	           		display: false,
+	           	},
+	           	maintainAspectRatio: false,
+		    }
+
+		});
+		
+	</script>
+</body>
+</html>

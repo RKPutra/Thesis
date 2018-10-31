@@ -1,0 +1,59 @@
+{% extends '../base.html' %}
+
+{% block body %}
+{% load static %}
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="sidebar-main">
+				<div class="vertical-menu">
+					<a href="/tes/diagnosis"><img src="{% static 'images/uii.png' %}"></a>
+					<div class="menu">
+						<a href="/tes/diagnosis" class="active"><h4><i class="material-icons">sort</i> Diagnosis</h4></a>
+						<a href="/tes/hasilDiagnosis"><h4><i class="material-icons">receipt</i> Hasil diagnosis</h4></a>
+						<div class="sidebar-footer" style="padding-top: 284px;">
+							<p>Hak Cipta &copy; 2018</br>Rizky Karunia Putra</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/tes/logout/"><h4>Logout</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="file">
+						<h3>Classification</h3>
+						<form enctype="multipart/form-data" method="post" action="/tes/hasilDiagnosis/">
+							{% csrf_token %}
+							<div class="row section-1">
+								<div class="col-sm-6">
+									<div class="data">
+										{% include 'index/component/input_tes.html' %}
+									</div>
+								</div>
+								<div class="col-sm-6">
+									<div class="data">
+										{% include 'index/component/pilih_class.html' %}
+										<div class="row">
+											<div class="col-sm-5 start">
+												<input type="submit" class="btn btn-primary btn-block" value="Start" id="submit" name="submit">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}

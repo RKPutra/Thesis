@@ -1,0 +1,74 @@
+{% extends '../base.html' %}
+
+{% block body %}
+{% load static %}
+<body>
+	<div class="wrapper">
+		<div class="sidebar">
+			<div class="sidebar-main">
+				<div class="vertical-menu">
+					<a href="/tes/tambah_dokter"><img src="{% static 'images/uii.png' %}"></a>
+					<div class="menu">
+						<a href="/tes/tambah_dokter" class="active"><h4><i class="material-icons">add_box</i> Tambah Dokter</h4></a>
+						<a href="/tes/training"><h4><i class="material-icons">sort</i> Training Data</h4></a>
+						<a href="/tes/hasilTraining"><h4><i class="material-icons">receipt</i> Hasil Training</h4></a>
+						<a href="/tes/ganti_parameter"><h4><i class="material-icons">receipt</i> Ganti Parameter</h4></a>
+						<div class="sidebar-footer">
+							<p>Hak Cipta &copy; 2018</br>Rizky Karunia Putra</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="content">
+			<nav class="navbar">
+				<div class="container-fluid">
+					<ul class="nav navbar-nav navbar-right">
+						<li><a href="/tes/logout/"><h4>Logout</h4></a></li>
+					</ul>
+				</div>
+			</nav>
+			<div class="main">
+				<div class="tab-content">
+					<div class="container-fluid tab-pane fade in active" id="solo">
+						<h3>Tambah Dokter</h3>
+						<form enctype="multipart/form-data" method="post" action="/tes/prosesTambahDokter/">
+							{% csrf_token %}
+							<div class="row section-1">
+								<div class="col-sm-6">
+									<div class="data">
+										<div class="form-group row">
+											<div class="col-sm-4">
+												<h4>Nama</h4>
+											</div>
+											<div class="col-sm-8 input">
+												<input type="text" class="form-control" placeholder="" name="nama" required>
+											</div>
+											<div class="col-sm-4">
+												<h4>Email</h4>
+											</div>
+											<div class="col-sm-8 input">
+												<input type="email" class="form-control" placeholder="" name="email" required>
+											</div>
+											<div class="col-sm-4">
+												<h4>Password</h4>
+											</div>
+											<div class="col-sm-8 input">
+												<input type="password" class="form-control" placeholder="" name="password" required>
+											</div>
+											<div class="col-sm-4"></div>
+											<div class="col-sm-8 start">
+												<input type="submit" class="btn btn-primary btn-block" value="Start" id="submit" name="submit">
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+{% endblock %}
